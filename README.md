@@ -4,7 +4,7 @@ This is a simple code to call fontconfig and do pattern match, like Firefox did.
 
 In a normal fontconfig call, there should be two steps, pattern match and sort by score. But for test purpose and do simplify the code, we only do the pattern match without sort, also like what Firefox did.
 
-So this code can help you to debug you configuration of fontconfig, and see why Firefox use another font instead of what you want.
+So this code can help you to debug your configuration of fontconfig, and see why Firefox use another font instead of what you want.
 
 ## Compile
 
@@ -16,20 +16,15 @@ g++ main.cpp -o main -lfontconfig
 
 ## Usage
 
-The lines started with '>' mean it's the input, and lines without it is output. The output is too long and I cutted much many.
+The program now use argument as font pattern.
+
+**Note** that no extra space should be present before or after the comma, and not quotation mark needed for patterns those contain spaces.
 
 ```
-$ ./main
->sans,mono
-========================
-DejaVu Sans
-DejaVu LGC Sans
+$ ./main "Noto Sans,sans-serif" | head -n 5
 Noto Sans
-Noto Sans CJK SC
 DejaVu LGC Sans
 Noto Sans
 DejaVu Sans
 Verdana
-
-...
 ```
